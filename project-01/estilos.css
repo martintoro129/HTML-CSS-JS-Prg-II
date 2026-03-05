@@ -1,0 +1,152 @@
+/* Paleta de colores personalizada */
+:root {
+    --primary-color: #1e3a8a;    /* Azul Oscuro */
+    --secondary-color: #3b82f6;  /* Azul Brillante */
+    --accent-color: #10b981;     /* Verde Esmeralda */
+    --bg-light: #f8fafc;         /* Gris muy claro */
+    --sidebar-bg: #111827;       /* Gris casi negro */
+}
+
+/* Estilo general */
+body {
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sidebar Modernizado */
+.sidebar {
+    background-color: var(--sidebar-bg) !important;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+    padding: 0px 10px 0px 5px;
+}
+
+.nav-link {
+    color: #9ca3af !important;
+    transition: all 0.3s ease;
+    border-radius: 10px !important;
+    margin-bottom: 5px;
+
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+    transform: translateX(5px);
+}
+
+/* Tarjetas (Cards) */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: white !important;
+    border-bottom: 1px solid #edf2f7 !important;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Botones con estilo moderno */
+.btn-primary { background-color: var(--secondary-color); border: none; }
+.btn-success { background-color: var(--accent-color); border: none; }
+
+/* Personalización de la Tabla */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--secondary-color) !important;
+    color: white !important;
+    border-radius: 5px;
+}
+.chat-box .message { margin-bottom: 15px; display: flex; flex-direction: column; }
+.chat-box .sent { align-items: flex-end; }
+.chat-box .received { align-items: flex-start; }
+
+.chat-box .bubble {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    font-size: 0.9rem;
+}
+
+.chat-box .sent .bubble { background: #007bff; color: white; border-bottom-right-radius: 2px; }
+.chat-box .received .bubble { background: #e4e6eb; color: #333; border-bottom-left-radius: 2px; }
+
+body {
+        display: flex;
+        min-height: 100vh;
+        background: #f4f6f9;
+    }
+
+    .sidebar {
+        width: 260px;
+        background: #2c3e50;
+        color: white;
+    }
+
+    .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-link {
+        color: #bdc3c7;
+    }
+
+    .nav-link.active {
+        background: #34495e !important;
+        color: white !important;
+    }
+
+    .nav-link:hover {
+        color: white;
+        background: #34495e;
+    }
+
+    .card-header {
+        background: #fff;
+        border-bottom: 2px solid #007bff;
+    }
+
+    .small-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.small-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+}
+
+.small-box .icon {
+    transition: transform 0.3s ease;
+}
+
+.small-box:hover .icon {
+    transform: scale(1.1);
+}
+
+.small-box-footer:hover {
+    background-color: rgba(0,0,0,0.2) !important;
+}
+
+/* Colores dinámicos para las notas */
+.nota-aprobada {
+    color: #0d6efd !important; /* Azul */
+    font-weight: bold;
+    border-color: #0d6efd !important;
+}
+
+.nota-reprobada {
+    color: #dc3545 !important; /* Rojo */
+    font-weight: bold;
+    border-color: #dc3545 !important;
+}
+
+.nota-input {
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 80px;
+    margin: 0 auto;
+}
