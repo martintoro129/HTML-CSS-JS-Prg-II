@@ -126,23 +126,44 @@
         });
 
         // Validación y SweetAlert
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const nombre = document.getElementById('nombre').value;
-            
-            if(nombre.length < 3) {
-                Swal.fire('Error', 'El nombre es muy corto', 'error');
-            } else {
-                Swal.fire({
-                    title: '¡Mensaje Enviado!',
-                    text: 'Recibirás respuesta en breve, ' + nombre,
-                    icon: 'success',
-                    confirmButtonColor: '#0dcaf0'
-                });
-                this.reset();
-            }
-        });
+       document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Capturar datos
+    const formData = new FormData();
+    formData.append('nombre', document.getElementById('nombre').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('mensaje', document.getElementById('mensaje').value);
+
+    // Animación de "Cargando"
+    Swal.fire({
+        title: 'Enviando señal...',
+        didOpen: () => { Swal.showLoading(); }
+    });
+
+    // Envío asíncrono (AJAX)
+    fetch('guardar_contacto.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.status === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Transmisión Exitosa',
+                text: 'Tus datos han sido encriptados y enviados.',
+                confirmButtonColor: '#0dcaf0'
+            });
+            this.reset();
+        } else {
+            Swal.fire('Error', 'Hubo un fallo en la matriz: ' + data.message, 'error');
+        }
+    })
+    .catch(error => {
+        Swal.fire('Error Critico', 'No hay conexión con el servidor', 'error');
+    });
+});
     </script>
 </body>
 </html>
