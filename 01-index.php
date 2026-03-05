@@ -113,6 +113,33 @@
             </div>
         </div>
     </section>
+    <section id="feed-mensajes" class="py-5">
+    <div class="container">
+        <h2 class="tech-font text-center mb-5"><i class="bi bi-broadcast"></i> Panel de Transmisiones</h2>
+        <div id="contenedor-mensajes" class="row g-4">
+            <div class="text-center">
+                <div class="spinner-border text-info" role="status"></div>
+                <p>Sincronizando con el servidor...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .post-card {
+        background: rgba(15, 32, 39, 0.7);
+        border-left: 4px solid #0dcaf0;
+        transition: transform 0.3s ease;
+    }
+    .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 15px rgba(13, 202, 240, 0.3);
+    }
+    .post-meta {
+        font-size: 0.8rem;
+        color: #6c757d;
+    }
+</style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -164,6 +191,43 @@
         Swal.fire('Error Critico', 'No hay conexión con el servidor', 'error');
     });
 });
+
+        function cargarMensajes() {
+    const contenedor = document.getElementById('contenedor-mensajes');
+
+    fetch('obtener_mensajes.php')
+        .then(response => response.json())
+        .then(data => {
+            contenedor.innerHTML = ''; // Limpiar cargador
+            
+            if(data.length === 0) {
+                contenedor.innerHTML = '<p class="text-center">No hay transmisiones entrantes.</p>';
+                return;
+            }
+
+            data.forEach(msg => {
+                const card = `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card post-card h-100 p-3 shadow-sm">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h6 class="text-info tech-font mb-0">${msg.nombre}</h6>
+                                <span class="badge bg-dark border border-info">${msg.fecha}</span>
+                            </div>
+                            <p class="small text-truncate"><strong>Email:</strong> ${msg.email}</p>
+                            <hr class="my-2 opacity-25">
+                            <p class="mb-0 text-light opacity-75">"${msg.mensaje}"</p>
+                        </div>
+                    </div>
+                `;
+                contenedor.innerHTML += card;
+            });
+        })
+        .catch(err => console.error("Error al sincronizar feed:", err));
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', cargarMensajes);
+        
     </script>
 </body>
 </html>
