@@ -1,0 +1,100 @@
+
+1. REFCATORIZAR.
+    cambiar.la.estructura.interna.sin.alterar.el.funcionamiento.externo.
+    Hacer.el.codigo.mas.limpio.y.estructurado.posible.
+
+2.  VARIABLES.
+    Almacenar.valores.y.asignarlos.a.una.ubicacion.
+    Es.una.caja.que.va.a.contener.informacion.que.a.su.vez.vamos.a.poder.referenciar.en.un.
+    futuro.
+    Las.VARIABLES.son.almacenadas.en.la.memoria.RAM.(Random.Access.Memory).
+    Las.variables.siempre.comienzan.por.letras.de.forma.camelCase
+    myVariable,nomCliente,rifCliente,cedCliente.
+    Las.variables.no.pueden.tener.nombres.reservados
+    Hay.tres.convenciones.para.definir.variables.pero.solo.una.debe.ser.adoptada.
+    para.desarrollar.nuestro.codigo.
+    1.UpperCamelCase,la.variable.se.define.comenzando.Mayusculas,si.es.el.caso.
+        la.segunda.letra.compuesta.del.Nombre.en.Mayusculas.y.de.haber.una.tercera.
+        igualmente.comenzaria.mayuscula
+    2.camelCase,La.primera.letra.comenzaria.minuscula.la.segunda.en.mayusculas.la.
+        tercera.en.minusculas.y.asi.sucesivamente.
+    3.snake_case.toda.la.definicion.es.en.minusculas.con.separacion.de._.
+    JS.es.case.sensitive.a.las.declaraciones.de.variables:
+        NombreCompleto.es.diferente.que.definir
+        nombrecompleto.para.JS.son.dos.variables.totalmente.diferentes.asi.tengan.asignado
+        el.mismo.valor.
+    La.mas.usada.es.camelCase.y.es.la.que.vamos.a.utilizar.a.lo.largo.de.nuestras.clases.
+    Siempre.hay.que.tratar.que.los.nomrbes.de.lass.variables.tengan.sentido.y.saber.siempre.de.que
+    tratancada.una.de.ellas.al.solo.verlas.
+
+  let
+      es.una.palabra.reservada.para.la.definicion.de.variables.
+  var se.usaba.en.timepos.amnteriores.
+    Las.variables.definidas.con.let.se.les.pueden.asignar.valores.a.lo.largo.del.codigo.
+
+3.TIPOS.DE.DATOS
+    *PRIMITIVOS
+        Number,
+        String,
+        Booleans,
+        Undefined,
+        Nulls
+    *DE.REFERENCIA
+        Arrays,
+        Objects(Objetos),
+        Functions(Funciones),
+        Clases.
+
+4.TIPOS.DE.LENGUAJE.DE.PROHGRAMACION.
+    *TIPADO.ESTATICO
+        JAVA.
+    *TIPADO.DINAMICO
+        JS.
+        cuando.el.lenguaje.de.programacion.nos.permite.el.cambio.de.las.variables.y.su.tipo.
+        ejemplo.definir.nombre="pedro",luego.nombre=42.sin.dar.ningun.tipo.de.problemas.
+5.COMENTARIOS.
+    //*Una.sola.linea.
+    /*
+    multiples.lineas
+     *
+     * multiples.lineas.de.comentarios
+     * sss
+     *
+     */
+
+6.OBJETOS.
+    Los.objetos.son.de.tipo.de.referencia.Cuando.los.guardamos.en.memoria.solo.se.guarda.
+    una.referencia.
+    No.es.un.tipo.de.datos.primitivos.
+    Son.una.agrupacion.de.datos.queestan.juntos.en.una.referencia.
+
+7.ARREGLOS
+    Coleccion.de.datos.Arrays.o.arreglos.(por.convencion.se.deben.mencionar.como.arrays)
+    let animals=[];//**este.se.conoce.como.arrays.literal.
+    el.array.siempre.respeta.el.orden.de.declaracion.de.los.elementos.a.diferencia.de.los.objetos.
+    los.elementos.arrays.comienzan.a.partir.del.numero.0.a.nivel.de.pisiciones.de.elementos.
+
+8.Funciones
+    Las.funciones.son.bloques.fundamentales.dentro.de.la.construccion.de.aplicaciones.en.JS.
+    Se.van.a.usar.durante.toda.tu.vida.como.desarrollador.JS.
+    se.declaran.con.la.palabra.reservada.de.function.
+
+9.ARGUMENTOS.Y.PARAMETROS
+    las.funciones.pueden.recibir.multiples.argumentos.y.multiples.parametros.
+    los.valores.que.les.pasamos.a.las.funciones.cuando.las.llamamos.son.ARGUMENTOS.
+    Y.cuando.referenciamos.los.valores.dentro.de.las.funciones.estas.se.llaman.parametros.
+
+DIFERENCIAA.ENTRE.EXPRESIONE.Y.DECLARACIONES.EN.JAVASCRIPT.
+    NOSOTROS.VAMOS.A.TRABAJAR.A.LO.LARGO.DE.ESTEPERIODO.
+    Expressions-Expresiones
+        cualquier.linea.de.codigo.o.porcion.de.codigo.que.evalue.en.un.valor
+        4+6=10,x=4,
+        miFuncion();//**Lllamados.a.funciones.
+    Declarations-Declaraciones
+    //**Se.usa.para.declarar.algo.de.forma.oral,para.usar.en.un.futuro
+        let-,const-
+        function o function *,async function o async function *
+        class,import,export
+    Statments-Declaraciones //**Se.usa.para.delcarar.algo.de.forma.escrita.
+        todas.las.demas.instrucciones.que.veamos.en.JS.corresponden.a.statments.
+        if,for,else,switch,whhile

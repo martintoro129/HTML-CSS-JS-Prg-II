@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maestro de Tareas</title>
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <h2>Pro Task Manager</h2>
+
+    <input type="text" id="busquedaInput" class="search-bar" placeholder="🔍 Buscar tarea...">
+
+    <div class="input-group">
+        <input type="text" id="tareaInput" placeholder="Nombre de la tarea...">
+        <button id="btnAgregar">Añadir</button>
+    </div>
+    <div class="meta-group">
+        <select id="prioInput">
+            <option value="baja">Baja</option>
+            <option value="media">Media</option>
+            <option value="alta">Alta</option>
+        </select>
+        <input type="date" id="fechaInput">
+    </div>
+
+    <div class="filtros">
+        <button onclick="filtrar('todas')" class="active" id="f-todas">Todas</button>
+        <button onclick="filtrar('pendientes')" id="f-pendientes">Pendientes</button>
+        <button onclick="filtrar('completadas')" id="f-completadas">Completadas</button>
+    </div>
+
+    <ul id="listaTareas"></ul>
+</div>
+<script src="tareas.js"></script>
+</body>
+</html>

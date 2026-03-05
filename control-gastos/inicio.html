@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWallet JS - Control de Finanzas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>MyWallet JS</h1>
+
+        <div class="resumen">
+            <div class="caja">
+                <h3>Ingresos</h3>
+                <p id="total-ingresos" class="verde">$0.00</p>
+            </div>
+            <div class="caja">
+                <h3>Gastos</h3>
+                <p id="total-gastos" class="rojo">$0.00</p>
+            </div>
+            <div class="caja">
+                <h3>Balance</h3>
+                <p id="balance-total">$0.00</p>
+            </div>
+        </div>
+
+        <form id="formulario-transaccion">
+            <input type="text" id="descripcion" placeholder="Descripción (ej. Sueldo, Pizza...)" required>
+            <input type="number" id="monto" placeholder="Monto" required>
+            <select id="tipo">
+                <option value="ingreso">Ingreso</option>
+                <option value="gasto">Gasto</option>
+            </select>
+            <button type="submit">Agregar Transacción</button>
+        </form>
+
+        <div class="historial">
+            <h3>Historial de Movimientos</h3>
+            <ul id="lista-transacciones">
+            s</ul>
+        </div>
+    </div>
+    <!-- *pruebas.de.comentarios -->
+    <script src="script-01.js"></script>
+</body>
+</html>
