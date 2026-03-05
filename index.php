@@ -39,7 +39,22 @@
             </div>
         </div>
     </nav>
-
+    <div class="container mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="input-group">
+                <span class="input-group-text bg-dark border-info text-info">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" id="searchInput" class="form-control bg-dark text-white border-info" 
+                       placeholder="Buscar por nombre o email...">
+            </div>
+            <div id="searchFeedback" class="text-info small mt-2 tech-font" style="display:none;">
+                Filtrando base de datos...
+            </div>
+        </div>
+    </div>
+</div>
     <section id="inicio" class="py-5">
         <div id="techCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -277,7 +292,36 @@ function eliminarMensaje(id) {
 }
 // Ejecutar al cargar la página
 document.addEventListener('DOMContentLoaded', cargarMensajes);
-        
+    //busqueda
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+    const term = this.value.toLowerCase(); // Lo que el usuario escribe
+    const cards = document.querySelectorAll('#contenedor-mensajes .col-md-6'); // Todas las tarjetas
+    const feedback = document.getElementById('searchFeedback');
+    let encontrados = 0;
+
+    feedback.style.display = term.length > 0 ? 'block' : 'none';
+
+    cards.forEach(card => {
+        // Obtenemos el texto del nombre y el email dentro de la tarjeta
+        const nombre = card.querySelector('h6').textContent.toLowerCase();
+        const email = card.querySelector('.small').textContent.toLowerCase();
+
+        if (nombre.includes(term) || email.includes(term)) {
+            card.style.display = "block"; // Mostrar
+            encontrados++;
+        } else {
+            card.style.display = "none"; // Ocultar
+        }
+    });
+
+    if(encontrados === 0 && term.length > 0) {
+        feedback.textContent = "No se encontraron coincidencias en el servidor.";
+        feedback.classList.replace('text-info', 'text-danger');
+    } else {
+        feedback.textContent = `Resultados encontrados: ${encontrados}`;
+        feedback.classList.replace('text-danger', 'text-info');
+    }
+});
     </script>
 </body>
 </html>
