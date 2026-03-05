@@ -154,6 +154,11 @@
         font-size: 0.8rem;
         color: #6c757d;
     }
+    #searchInput:focus {
+    box-shadow: 0 0 10px rgba(13, 202, 240, 0.5);
+    border-color: #0dcaf0;
+    background-color: #000;
+}
 </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
