@@ -206,16 +206,22 @@
             }
 
             data.forEach(msg => {
+                // Dentro de la función cargarMensajes, en el bucle data.forEach(msg => { ...
                 const card = `
-                    <div class="col-md-6 col-lg-4">
-                        <div class="card post-card h-100 p-3 shadow-sm">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div class="col-md-6 col-lg-4" id="post-${msg.id}">
+                        <div class="card post-card h-100 p-3 shadow-sm border-0">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
                                 <h6 class="text-info tech-font mb-0">${msg.nombre}</h6>
-                                <span class="badge bg-dark border border-info">${msg.fecha}</span>
+                                <button class="btn btn-outline-danger btn-sm border-0" onclick="confirmarEliminar(${msg.id})">
+                                    <i class="bi bi-trash3"></i>
+                                </button>
                             </div>
-                            <p class="small text-truncate"><strong>Email:</strong> ${msg.email}</p>
+                            <p class="small mb-1 text-muted">${msg.email}</p>
                             <hr class="my-2 opacity-25">
                             <p class="mb-0 text-light opacity-75">"${msg.mensaje}"</p>
+                            <div class="mt-2 text-end">
+                                <span class="badge bg-dark text-secondary" style="font-size: 0.7rem;">${msg.fecha}</span>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -224,7 +230,51 @@
         })
         .catch(err => console.error("Error al sincronizar feed:", err));
 }
+function confirmarEliminar(id) {
+    Swal.fire({
+        title: '¿Eliminar transmisión?',
+        text: "Esta acción no se puede deshacer en la base de datos.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, borrar',
+        cancelButtonText: 'Cancelar',
+        background: '#1a1a1a', // Fondo oscuro para combinar con el tema
+        color: '#fff'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarMensaje(id);
+        }
+    });
+}
 
+function eliminarMensaje(id) {
+    const formData = new FormData();
+    formData.append('id', id);
+
+    fetch('eliminar_mensaje.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.status === 'success') {
+            // Animación de desvanecimiento antes de quitarlo del DOM
+            const elemento = document.getElementById(`post-${id}`);
+            elemento.style.transition = "0.5s";
+            elemento.style.opacity = "0";
+            elemento.style.transform = "scale(0.8)";
+            
+            setTimeout(() => {
+                cargarMensajes(); // Recargamos para refrescar la vista
+                Swal.fire('Eliminado', 'La señal ha sido purgada.', 'success');
+            }, 500);
+        } else {
+            Swal.fire('Error', 'No se pudo eliminar el registro.', 'error');
+        }
+    });
+}
 // Ejecutar al cargar la página
 document.addEventListener('DOMContentLoaded', cargarMensajes);
         
