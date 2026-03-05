@@ -56,25 +56,25 @@
     </div>
 </div>
     <section id="inicio" class="py-5">
+        <?php
+include 'conexion.php';
+$query_prod = "SELECT * FROM productos";
+$res_prod = mysqli_query($conn, $query_prod);
+$first = true; // Para marcar el primer item como 'active'
+?>
+
         <div id="techCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-                <?php
-                // Conexión simulada a MySQL
-                // $conn = mysqli_connect("localhost", "root", "", "tech_db");
-                // $result = mysqli_query($conn, "SELECT * FROM productos");
-                
-                // Ejemplo de cómo iterar con PHP:
-                $active = "active";
-                // while($row = mysqli_fetch_assoc($result)){ 
-                for($i=1; $i<=3; $i++){ ?>
-                    <div class="carousel-item <?php echo ($i==1) ? 'active' : ''; ?>">
-                        <img src="https://picsum.photos/1200/500?random=<?php echo $i; ?>" class="d-block w-100 rounded" alt="Tech">
-                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded">
-                            <h5 class="tech-font">Producto Innovador <?php echo $i; ?></h5>
-                            <p>Descripción obtenida desde tu base de datos MySQL.</p>
+                <?php while($prod = mysqli_fetch_assoc($res_prod)): ?>
+                    <div class="carousel-item <?php echo $first ? 'active' : ''; ?>">
+                        <img src="<?php echo $prod['imagen_url']; ?>" class="d-block w-100 rounded" alt="...">
+                        <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded-3 border border-info p-3">
+                            <h5 class="tech-font text-info"><?php echo $prod['nombre']; ?></h5>
+                            <p><?php echo $prod['descripcion']; ?></p>
                         </div>
                     </div>
-                <?php } ?>
+                    <?php $first = false; ?>
+                <?php endwhile; ?>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#techCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
