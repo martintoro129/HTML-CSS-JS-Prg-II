@@ -78,7 +78,7 @@ CREATE TABLE `usuarios` (
   `rol` enum('Admin','Editor','Usuario') DEFAULT 'Usuario',
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `foto` varchar(255) DEFAULT 'default.png'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Volcado de datos para la tabla `usuarios`
